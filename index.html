@@ -32,6 +32,14 @@
 
     <div :class="'side-left side-view-' + baseview">
         <div class="left-panel">
+
+            <div>
+                <label>google搜索:</label>
+                <br>
+                <input type="text" v-model="search" v-on:keyup="searchKeyup"/>
+                <button v-on:click="searchGo" >GO</button>
+            </div>
+
             <div>
                 <label>时间戳转换北京时间:</label>
                 <br>
@@ -39,6 +47,8 @@
                 <input type="radio" name="isms" value="0" v-model="isms">秒
                 <input type="radio" name="isms" value="1" v-model="isms">毫秒
             </div>
+
+
             <div>
                 <label>北京时间转换时间戳:</label>
                 <br>

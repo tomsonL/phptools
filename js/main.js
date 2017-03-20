@@ -168,6 +168,7 @@
             baseview: 'formater',
             view: '',
             timestamp: '',
+            search:'',
             timestamp_human: unixTimestampToHuman(Math.round(timeNow.getTime() / 1000), 0),
             encrypt: '',
             isms: '0',
@@ -183,7 +184,14 @@
             code: ''
         },
         methods: {
-
+            searchGo:function () {
+                window.open('https://google.gg-g.org/#q=' + App.search + '&*', Math.random());
+            },
+            searchKeyup:function () {
+                if(window.event.keyCode==13){
+                    window.open('https://google.gg-g.org/#q=' + App.search + '&*', Math.random());
+                }
+            },
             // 全部展开
             expandAll: function () {
                 $('.icon-square-min').show()
