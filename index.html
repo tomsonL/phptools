@@ -6,8 +6,9 @@
     <meta name="keywords" content="php在线工具"/>
     <meta name="description" content="一款简洁优雅的在线PHP工具，在线时间戳转换、在线解码、在线Json验证、常用PHP代码生成"/>
     <link href="css/hint.min.css" rel="stylesheet">
-    <link href="css/diffview.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/diffview.css" rel="stylesheet">
+
     <script src="js/vue.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/helper.js"></script>
@@ -66,8 +67,15 @@
             <div>
                 <label>解码:</label>
                 <br>
-                <textarea class="full" v-model="encrypt"></textarea>
+                <textarea v-model="encrypt"></textarea>
             </div>
+
+            <div>
+                <label>curl命令转php代码:</label>
+                <br>
+                <textarea v-model="curltophp"></textarea>
+            </div>
+
             <div>
                 <label>代码生成:</label>
                 <br>
@@ -76,7 +84,6 @@
                 <button v-on:click="showCodeCurlPost">curl-post</button>
                 <button v-on:click="showCodeCurlFile">curl-file</button>
             </div>
-            <div class="label" v-show="baseview == 'diff'">原 JSON</div>
         </div>
     </div>
     <div class="left-panel" v-show="baseview == 'diff'">
@@ -405,6 +412,11 @@ curl_close($ch);
     })();
 </script>
 
+<style type="text/css">
+    textarea {
+        width: 100%;
+    }
+</style>
 
 </body>
 </html>

@@ -186,7 +186,8 @@
             historys: [],
             history: {name: ''},
             noActive: true,
-            code: ''
+            code: '',
+            curltophp:'',
         },
         methods: {
             searchGo:function () {
@@ -490,6 +491,11 @@
             encrypt: function () {
                 App.code = "";
                 App.unencrypt();
+            },
+            curltophp: function( ){
+                App.code = "";
+                App.jsonhtml = 'aaaaaa';
+                //curl_to_php.transform(i, w)
             }
         },
         created: function () {
