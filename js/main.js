@@ -101,7 +101,9 @@
         "GitHub": "https://github.com/bimohxh/jsonon"\n\
       }\n\
   }'
-    var unixTimestampToHuman = function (timestamp = '', isms = 0) {
+    var unixTimestampToHuman = function (timestamp, isms) {
+        timestamp = timestamp || '';
+        isms = isms || 0;
         if (isNaN(timestamp)) {
             timestamp = timestamp.trim()
         }
@@ -133,7 +135,10 @@
         return dateObj.getFullYear() + '/' + (dateObj.getMonth() + 1) + '/' + dateObj.getDate() + ' ' + dateObj.getHours() + ':' + dateObj.getMinutes() + ':' + dateObj.getSeconds();
     }
 
-    var unixHumanToTimestamp = function (humanFormatTime = '', isms = 0) {
+    var unixHumanToTimestamp = function (humanFormatTime, isms) {
+
+        humanFormatTime = humanFormatTime|| '';
+        isms = isms || 0;
         var datetime = humanFormatTime;
         if (!datetime) return;
         var ndate = new Date(datetime);
