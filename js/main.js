@@ -487,7 +487,7 @@
                 App.unencrypt();
             }
         },
-        created () {
+        created: function () {
             this.listHistory()
         }
     })
