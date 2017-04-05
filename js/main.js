@@ -188,6 +188,7 @@
             noActive: true,
             code: '',
             curltophp:'',
+            php:'',
         },
         methods: {
             searchGo:function () {
@@ -494,8 +495,18 @@
             },
             curltophp: function( ){
                 App.code = "";
-                App.jsonhtml = 'aaaaaa';
-                //curl_to_php.transform(i, w)
+                App.view = 'php'
+                var o = curl_to_php.transform(App.curltophp, 'php')
+                console.log(o);
+                // if (o) {
+                //     o = hljs.highlight("php", o).value
+                //     o = o.replace(/\*([^*]+)+\*/g, '<b>\$1</b>')
+                //     o = o.replace(/`([^`]+)`/g, function(s, p) {
+                //         return '<a href="#' + encodeURI(p) + '">' + p + '</a>'
+                //     })
+                // }
+                App.php = o;
+                //App.php =  o;
             }
         },
         created: function () {

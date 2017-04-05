@@ -148,13 +148,13 @@ a:active svg, a:hover svg{
 
 .left-panel {
   height: 100%;
-  position: relative
+  position: relative;
+  overflow:scroll;
 }
-
 
 textarea {
   display: block;
-  height: 20%;
+  height: 70px;
   outline: none;
     border-width: 1px;
   resize: none;

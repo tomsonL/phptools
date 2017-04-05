@@ -8,7 +8,6 @@
     <link href="css/hint.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/diffview.css" rel="stylesheet">
-
     <script src="js/vue.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/helper.js"></script>
@@ -55,9 +54,11 @@
             <div>
                 <label>北京时间转换时间戳:</label>
                 <br>
-                <input type="text" v-bind:class="{grey: noActive}" v-on:focus="active" v-on:blur="noactive" v-model="timestamp_human" />
-                <input type="radio" name="isms2" value="0" v-model="isms2">秒
-                <input type="radio" name="isms2" value="1" v-model="isms2">毫秒
+                <div class="inner-input">
+                    <input type="text" v-bind:class="{grey: noActive}" v-on:focus="active" v-on:blur="noactive" v-model="timestamp_human" />
+                    <input type="radio" name="isms2" value="0" v-model="isms2">秒
+                    <input type="radio" name="isms2" value="1" v-model="isms2">毫秒
+                </div>
             </div>
             <div>
                 <label>json验证:</label>
@@ -70,11 +71,11 @@
                 <textarea v-model="encrypt"></textarea>
             </div>
 
-            <!--<div>-->
-                <!--<label>curl命令转php代码:</label>-->
-                <!--<br>-->
-                <!--<textarea v-model="curltophp"></textarea>-->
-            <!--</div>-->
+            <div>
+                <label>curl命令转php代码:</label>
+                <br>
+                <textarea v-model="curltophp"></textarea>
+            </div>
 
             <div>
                 <label>代码生成:</label>
@@ -95,105 +96,19 @@
 
     <div class="side-right">
         <div class="right-inner">
-            <!--<div class="right-bar">-->
-                <!--<template v-if="baseview == 'formater'">-->
-                    <!--<a class="hint&#45;&#45;top" data-hint="压缩">-->
-                        <!--<svg @click="compress()" v-bind:class="'icon  active-' + (view == 'compress')">-->
-                            <!--<use xlink:href="svg/icon.svg#database"></use>-->
-                        <!--</svg>-->
-                    <!--</a>-->
-
-                    <!--<a class="hint&#45;&#45;top" data-hint="美化">-->
-                        <!--<svg class="icon" @click="beauty()">-->
-                            <!--<use xlink:href="svg/icon.svg#beauty"></use>-->
-                        <!--</svg>-->
-                    <!--</a>-->
-
-                    <!--<a class="hint&#45;&#45;top" data-hint="清空">-->
-                        <!--<svg class="icon" @click="clearAll()">-->
-                            <!--<use xlink:href="svg/icon.svg#clear"></use>-->
-                        <!--</svg>-->
-                    <!--</a>-->
-
-
-                    <!--<a class="hint&#45;&#45;top" data-hint="全部展开">-->
-                        <!--<svg class="icon" @click="expandAll()">-->
-                            <!--<use xlink:href="svg/icon.svg#expand"></use>-->
-                        <!--</svg>-->
-                    <!--</a>-->
-
-                    <!--<a class="hint&#45;&#45;top" data-hint="全部折叠">-->
-                        <!--<svg class="icon" @click="collapseAll()">-->
-                            <!--<use xlink:href="svg/icon.svg#collapse"></use>-->
-                        <!--</svg>-->
-                    <!--</a>-->
-
-                    <!--<a class="hint&#45;&#45;left pull-right" data-hint="Diff">-->
-                        <!--<svg class="icon" @click="baseViewToDiff()">-->
-                            <!--<use xlink:href="svg/icon.svg#diff"></use>-->
-                        <!--</svg>-->
-                    <!--</a>-->
-
-                    <!--<div class="pull-right" v-show="historys.length > 0">-->
-                        <!--<a class="hint&#45;&#45;top" data-hint="历史保存" href="javascript:void(0)">-->
-                            <!--<svg class="icon">-->
-                                <!--<use xlink:href="svg/icon.svg#record"></use>-->
-                            <!--</svg>-->
-                        <!--</a>-->
-
-                        <!--<ul class="historys pop">-->
-                            <!--<li v-for="(his, index) in historys">-->
-                                <!--<a href="javascript:void(0)" @click="restore(his)"> {{his.name}}</a>-->
-
-                                <!--<svg class="icon" @click="remove(his, index)">-->
-                                    <!--<use xlink:href="svg/icon.svg#trash"></use>-->
-                                <!--</svg>-->
-                            <!--</li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
-
-                    <!--<div class="pull-right">-->
-                        <!--<a class="hint&#45;&#45;top" data-hint="保存" href="javascript:void(0)">-->
-                            <!--<svg class="icon" @click="save()">-->
-                                <!--<use xlink:href="svg/icon.svg#save"></use>-->
-                            <!--</svg>-->
-                        <!--</a>-->
-                        <!--<div class="pop-save pop">-->
-                            <!--<input type="text" placeholder="请输入辨识名称" v-model="history.name"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</template>-->
-
-                <!--<template v-if="baseview == 'diff'">-->
-                    <!--<a class="hint&#45;&#45;top" data-hint="Diff">-->
-                        <!--<svg class="icon" @click="diffTwo()">-->
-                            <!--<use xlink:href="svg/icon.svg#diff"></use>-->
-                        <!--</svg>-->
-                    <!--</a>-->
-
-                    <!--<a class="hint&#45;&#45;left pull-right" data-hint="格式化视图">-->
-                        <!--<svg class="icon" @click="baseViewToFormater()">-->
-                            <!--<use xlink:href="svg/icon.svg#tree"></use>-->
-                        <!--</svg>-->
-                    <!--</a>-->
-
-                <!--</template>-->
-
-            <!--</div>-->
-
-            <!--格式化视图-->
             <div class="right-main" v-show="baseview == 'formater' && view != 'error'">
 
-                <!--正常JSON格式化视图-->
                 <div class="view-code" v-show="view == 'code'">
                     <vue-outer :jsondata="jsonhtml" isend="true"></vue-outer>
                 </div>
 
-                <!--空视图-->
+                <div v-show="view == 'php'">
+                    <pre><code v-html="php"></code></pre>
+                </div>
+
                 <div class="view-code" v-show="view == 'empty'">
                 </div>
 
-                <!--压缩视图-->
                 <textarea v-show="view == 'compress'">{{compressStr}}</textarea>
 
                 <textarea v-show="code == 'mysqli'" class="full-height">
@@ -398,7 +313,9 @@ curl_close($ch);
 <script src="js/difflib.js"></script>
 <script src="js/localforage.min.js"></script>
 <script src="js/encrypt.js"></script>
+<script src="js/curl_to_php.js"></script>
 <script src="js/main.js"></script>
+
 
 
 
