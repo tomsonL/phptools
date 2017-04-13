@@ -122,20 +122,20 @@ a:active svg, a:hover svg{
 
 
 .side-left {
-  position: absolute;
+  #position: absolute;
   left: 0;
   top: 50px;
   bottom: 0;
   width: 40%;
   overflow: hidden;
-  box-shadow: 1px 1px 1px rgba(245, 244, 244, 0.52);
+  #box-shadow: 1px 1px 1px rgba(245, 244, 244, 0.52);
   
 }
 
 .side-left div{
-    margin: 10px 5px;
-    border-bottom: 1px solid #efefef;
-    padding-bottom: 15px;
+    margin: 1px 5px;
+    /*border-bottom: 1px solid #efefef;*/
+    /*padding-bottom: 15px;*/
 }
 
 .side-left label{
@@ -464,4 +464,9 @@ table.diff thead th.texttitle {
   background-color: #d9edf7;
   border-color: #bce8f1;
   color: #31708f;
+}
+
+
+.pure-g .label-p{
+    letter-spacing : 0em;
 }

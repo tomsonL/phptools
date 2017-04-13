@@ -8,6 +8,7 @@
     <link href="css/hint.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/diffview.css" rel="stylesheet">
+    <link href="css/pure-min.css" rel="stylesheet">
     <script src="js/vue.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/helper.js"></script>
@@ -24,69 +25,97 @@
 
         <div class="top-right">
             <!--<a href="https://github.com/bimohxh/jsonon" target="_blank">-->
-                <!--GitHub-->
-                <!--&lt;!&ndash;<svg class="icon">-->
-                  <!--<use xlink:href="svg/icon.svg#github"></use>-->
-                <!--</svg>&ndash;&gt;-->
+            <!--GitHub-->
+            <!--&lt;!&ndash;<svg class="icon">-->
+            <!--<use xlink:href="svg/icon.svg#github"></use>-->
+            <!--</svg>&ndash;&gt;-->
             <!--</a>-->
         </div>
     </div>
 
-    <div :class="'side-left side-view-' + baseview">
-        <div class="left-panel">
+    <form class="pure-form">
 
-            <div>
-                <label>google搜索:</label>
-                <br>
-                <input type="text" v-model="search" v-on:keyup="searchKeyup"/>
-                <button v-on:click="searchGo" >GO</button>
-            </div>
+        <div :class="'side-left side-view-' + baseview">
+            <div class="left-panel">
 
-            <div>
-                <label>时间戳转换北京时间:</label>
-                <br>
-                <input type="text" v-model="timestamp"/>
-                <input type="radio" name="isms" value="0" v-model="isms">秒
-                <input type="radio" name="isms" value="1" v-model="isms">毫秒
-            </div>
+                <div class="pure-g">
+                    <p class="label-p">google搜索:</p>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-3-5"><input class="pure-input-1" type="text" v-model="search" v-on:keyup="searchKeyup"/></div>
+                    <div class="pure-u-1-5"><button v-on:click="searchGo" class="button-secondary pure-button">GO</button></div>
+                </div>
 
 
-            <div>
-                <label>北京时间转换时间戳:</label>
-                <br>
-                <div class="inner-input">
-                    <input type="text" v-bind:class="{grey: noActive}" v-on:focus="active" v-on:blur="noactive" v-model="timestamp_human" />
-                    <input type="radio" name="isms2" value="0" v-model="isms2">秒
-                    <input type="radio" name="isms2" value="1" v-model="isms2">毫秒
+                <div class="pure-g">
+                    <p class="label-p">时间戳转换北京时间:</p>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-3-5"><input class="pure-input-1" type="text" v-model="timestamp"/></div>
+                    <div class="pure-u-1-5">
+                        <input  type="radio" name="isms" value="0" v-model="isms"> 秒
+                        <input  type="radio" name="isms" value="1" v-model="isms"> 毫秒
+                    </div>
+                </div>
+
+                <div class="pure-g">
+                    <p class="label-p">北京时间转换时间戳:</p>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-3-5">
+                        <input class="pure-input-1" type="text" v-bind:class="{grey: noActive}" v-on:focus="active" v-on:blur="noactive"
+                               v-model="timestamp_human"/>
+                    </div>
+                    <div class="pure-u-1-5">
+                        <input type="radio" name="isms2" value="0" v-model="isms2"> 秒
+                        <input type="radio" name="isms2" value="1" v-model="isms2"> 毫秒
+                    </div>
+                </div>
+
+
+                <div class="pure-g">
+                    <p class="label-p">json验证:</p>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-4-5">
+                        <textarea class="pure-input-1" v-model="jsoncon"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="pure-g">
+                    <p class="label-p">解码:</p>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-4-5">
+                        <textarea class="pure-input-1" v-model="encrypt"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="pure-g">
+                    <p class="label-p">curl命令转php代码:</p>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-4-5">
+                        <textarea class="pure-input-1" v-model="curltophp"></textarea>
+                    </div>
+                </div>
+
+
+                <div>
+                    <label>代码生成:</label>
+                    <br>
+                    <button class="button-secondary pure-button" v-on:click="showCodeMysqli">mysqli</button>
+                    <button class="button-secondary pure-button" v-on:click="showCodeCurlGet">curl-get</button>
+                    <button class="button-secondary pure-button" v-on:click="showCodeCurlPost">curl-post</button>
+                    <button class="button-secondary pure-button" v-on:click="showCodeCurlFile">curl-file</button>
                 </div>
             </div>
-            <div>
-                <label>json验证:</label>
-                <br>
-                <textarea v-model="jsoncon"></textarea>
-            </div>
-            <div>
-                <label>解码:</label>
-                <br>
-                <textarea v-model="encrypt"></textarea>
-            </div>
-
-            <div>
-                <label>curl命令转php代码:</label>
-                <br>
-                <textarea v-model="curltophp"></textarea>
-            </div>
-
-            <div>
-                <label>代码生成:</label>
-                <br>
-                <button v-on:click="showCodeMysqli" >mysqli</button>
-                <button v-on:click="showCodeCurlGet">curl-get</button>
-                <button v-on:click="showCodeCurlPost">curl-post</button>
-                <button v-on:click="showCodeCurlFile">curl-file</button>
-            </div>
         </div>
-    </div>
+    </form>
+
+
     <div class="left-panel" v-show="baseview == 'diff'">
         <textarea v-model="newjsoncon"></textarea>
         <div class="label">新 JSON</div>
@@ -156,7 +185,7 @@ var_dump($return);
                 </textarea>
 
 
-                <textarea v-show="code == 'curl-post'" class="full-height">
+                    <textarea v-show="code == 'curl-post'" class="full-height">
 <?php
 $api_url = "http://localhost:8080/post_test";
 $post_data = array(
@@ -194,17 +223,7 @@ curl_close($ch);
                 </textarea>
 
 
-
-
-
-
-
-
             </div>
-
-
-
-
 
 
             <!--格式化错误视图-->
@@ -317,11 +336,9 @@ curl_close($ch);
 <script src="js/main.js"></script>
 
 
-
-
 <script>
     var _hmt = _hmt || [];
-    (function() {
+    (function () {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?f8e33304c9cdf7ff0bd54bc540d0e000";
         var s = document.getElementsByTagName("script")[0];
@@ -332,6 +349,16 @@ curl_close($ch);
 <style type="text/css">
     textarea {
         width: 100%;
+    }
+
+    .button-secondary {
+        color: white;
+        border-radius: 4px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-secondary {
+        background: rgb(66, 184, 221);
     }
 </style>
 
