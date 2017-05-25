@@ -191,12 +191,13 @@
             php:'',
         },
         methods: {
+            //google镜像
             searchGo:function () {
-                window.open('https://google.gg-g.org/#q=' + App.search + '&*', Math.random());
+                window.open('https://b.freedo.gq/#q=' + App.search + '&*', Math.random());
             },
             searchKeyup:function () {
                 if(window.event.keyCode==13){
-                    window.open('https://google.gg-g.org/#q=' + App.search + '&*', Math.random());
+                    window.open('https://b.freedo.gq/#q=' + App.search + '&*', Math.random());
                 }
             },
             // 全部展开
