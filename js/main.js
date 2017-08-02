@@ -193,11 +193,13 @@
         methods: {
             //google镜像
             searchGo:function () {
-                window.open('http://g.suconghou.cn/#q=' + App.search + '&*', Math.random());
+                window.open('https://c.ggkai.men/search?safe=strict&site=&source=hp&btnG=Google+%E6%90%9C%E7%B4%A2&q=' + App.search + '&*', Math.random());
+                //window.open('http://g.abcdocker.com/#q=' + App.search + '&*', Math.random());
             },
             searchKeyup:function () {
                 if(window.event.keyCode==13){
-                    window.open('http://g.suconghou.cn/#q=' + App.search + '&*', Math.random());
+                    window.open('https://c.ggkai.men/search?safe=strict&site=&source=hp&btnG=Google+%E6%90%9C%E7%B4%A2&q=' + App.search + '&*', Math.random());
+                    //window.open('http://g.abcdocker.com/#q=' + App.search + '&*', Math.random());
                 }
             },
             // 全部展开
