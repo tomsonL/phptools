@@ -172,7 +172,7 @@
         data: {
             baseview: 'formater',
             view: '',
-            timestamp: '',
+            timestamp: Math.round(timeNow.getTime() / 1000).toString(),
             search:'',
             timestamp_human: unixTimestampToHuman(Math.round(timeNow.getTime() / 1000), 0),
             encrypt: '',
@@ -286,6 +286,7 @@
 
             // 根据时间戳显示格式化后的时间
             showDatetimeInHuman: function (timestamp) {
+                timestamp = this.timestamp;
                 if (App.baseview === 'diff') {
                     return
                 }

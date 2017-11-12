@@ -126,7 +126,7 @@ a:active svg, a:hover svg{
   left: 0;
   top: 50px;
   bottom: 0;
-  width: 40%;
+  width: 100%;
   overflow: hidden;
   #box-shadow: 1px 1px 1px rgba(245, 244, 244, 0.52);
   
@@ -148,6 +148,7 @@ a:active svg, a:hover svg{
 
 .left-panel {
   height: 100%;
+  width: 40%;
   position: relative;
   overflow:scroll;
 }
@@ -183,7 +184,7 @@ textarea {
 
 .right-inner {
   position: relative;
-  width: 100%;
+  width: 50%;
   height: 100%;
   padding-top: 0px;
 }
@@ -469,4 +470,5 @@ table.diff thead th.texttitle {
 
 .pure-g .label-p{
     letter-spacing : 0em;
+    font-weight:bold;
 }

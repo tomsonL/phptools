@@ -3,6 +3,7 @@
 curl_to_php = {}
 
 curl_to_php.transform = function (c, w) {
+
     if (typeof w == "string") w = curl_to_php.container[w + '_writter']()
     if (!w) w = curl_to_php.container['php_writter']()
     try {
