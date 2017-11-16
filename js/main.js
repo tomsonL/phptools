@@ -1,5 +1,56 @@
 'use strict';
+
 (function () {
+
+
+    var check_mirrors = function () {
+        var urls = [
+            "https://direct.likeso.ml",
+            "https://g.codery.ga/",
+            "https://coderschool.2345.ga/",
+            "https://wing.likeso.ml/",
+            "https://google.uulucky.com/",
+            "http://hk.free9.org/",
+            "https://scmor.ilxc.cc/",
+            "https://bb.hmlxy.com/",
+            "https://g.codery.ga/",
+            "https://goo.now.sh/",
+        ];
+        var count = 1;
+        for( var key in urls ){
+            axios.get(urls[key], { timeout:1500 })
+                .then(function(response) {
+                    console.log(response.data);
+                    console.log(response.status);
+                    console.log(response.statusText);
+                    console.log(response.headers);
+                    console.log(response.config);
+                    console.log("then");
+                })
+                .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else {
+                    console.log(error.message);
+                    if( error.message.indexOf('timeout') == -1 ){
+                        console.log('ok');
+                        eval( "App.show_mirror" + count + "=true" );
+                        eval( "App.href_mirror" + count + "='" + urls[count-1] +"'");
+                        count++;
+                        console.log(  count );
+                    }else{
+                        console.log('ng');
+                    }
+                }
+            });
+        }
+    }
+
+    check_mirrors();
+
+
     Vue.component('vue-item', {
         props: ['jsondata'],
         template: '#item-template'
@@ -189,6 +240,16 @@
             code: '',
             curltophp:'',
             php:'',
+            show_mirror1:false,
+            show_mirror2:false,
+            show_mirror3:false,
+            show_mirror4:false,
+            show_mirror5:false,
+            href_mirror1:'',
+            href_mirror2:'',
+            href_mirror3:'',
+            href_mirror4:'',
+            href_mirror5:'',
         },
         methods: {
             //google镜像
@@ -515,6 +576,50 @@
         },
         created: function () {
             this.listHistory()
+
+            // for( var key in urls ){
+            //     //alert(urls[key]);
+            //     // $.get( urls [key ], function(data, status){
+            //     //     alert(status);
+            //     //     eval( "this.show_mirror" + count + "= true");
+            //     //     eval( "this.href_mirror" + count + "=" + url);
+            //     //     count++;
+            //     // });
+            //
+            //     console.log(urls[key]);
+            //     // this.show_mirror1 = true;
+            //     // this.href_mirror1 = urls[key];
+            //     // eval( "this.show_mirror" + "1" + " = true");
+            //     var keyong = false;
+            //     $.ajax({
+            //         url: urls[key],
+            //         success: function(){
+            //             //alert('success');
+            //             console.log('success');
+            //         },
+            //         error: function(xhr,text,error){
+            //             if( xhr.statusText == 'timeout'){
+            //                 console.log('bukeyong');
+            //                 keyong = false;
+            //             }else{
+            //                 keyong = true;
+            //                 console.log('ok');
+            //             }
+            //         },
+            //         timeout: 1500,
+            //         //async: false
+            //     });
+            //
+            //     if ( keyong ){
+            //         alert('xx');
+            //         eval( "this.show_mirror" + count + " = true");
+            //         eval( "this.href_mirror" + count + " = " + urls[key]);
+            //         count++;
+            //     }
+            // }
         }
+
+
+
     })
 })()

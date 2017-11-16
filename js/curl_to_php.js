@@ -160,8 +160,7 @@ curl_to_php.tokenize = function (c) {
     if (c[0] == '$' || c[0] == '#') c = c.substr(1).trim()
     while (o < c.length) {
         t = curl_to_php.tokenize.match(c.substring(o))
-        if (!t) throw new Error(
-            "argument *" + c.substring(o).replace(/\s+.*$/g, "") + "* not reconized")
+        if (!t) throw new Error("argument *" + c.substring(o).replace(/\s+.*$/g, "") + "* not reconized")
         o = o + t.length
         if (typeof s[t.token] == "undefined") s[t.token] = t.match
         else if (typeof s[t.token] == "string") s[t.token] = [s[t.token], t.match]

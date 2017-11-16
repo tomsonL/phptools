@@ -41,9 +41,9 @@ a, svg {
   text-decoration: none
 }
 
-a:link, a:visited {
-  color: #999;
-}
+/*a:link, a:visited {*/
+  /*color: #999;*/
+/*}*/
 
 a:link svg, a:visited svg {
   fill: #999; 

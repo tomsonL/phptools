@@ -9,7 +9,10 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="css/diffview.css" rel="stylesheet">
     <link href="css/pure-min.css" rel="stylesheet">
+    <link href="css/quick-layout.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/vue.min.js"></script>
+    <script src="js/json-backup.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/helper.js"></script>
 </head>
@@ -37,8 +40,14 @@
             <p class="label-p"> google搜索:</p>
         </div>
         <div class="pure-g">
-            <input class="pure-input-1" type="text" v-model="search" v-on:keyup="searchKeyup"/>
-            <button v-on:click="searchGo" class="button-secondary pure-button">GO</button>
+            <!--<input class="pure-input-1" type="text" v-model="search" v-on:keyup="searchKeyup"/>-->
+            <!--<button v-on:click="searchGo" class="button-secondary pure-button">GO</button>-->
+            <a class="db ml10 f16 bg-red2 p5" v-show="show_mirror1" v-bind="{href: href_mirror1}" class="button-secondary pure-button">镜像1</a>
+            <a class="db ml10 f16 bg-red2 p5" v-show="show_mirror2" v-bind="{href: href_mirror2}" class="button-secondary pure-button">镜像2</a>
+            <a class="db ml10 f16 bg-red2 p5" v-if="show_mirror3" v-bind="{href: href_mirror3}" class="button-secondary pure-button">镜像3</a>
+            <a class="db ml10 f16 bg-red2 p5" v-if="show_mirror4" v-bind="{href: href_mirror4}" class="button-secondary pure-button">镜像4</a>
+            <a class="db ml10 f16 bg-red2 p5" v-if="show_mirror5" v-bind="{href: href_mirror5}" class="button-secondary pure-button">镜像5</a>
+
         </div>
 
 
