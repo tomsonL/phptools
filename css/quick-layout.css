@@ -83,8 +83,8 @@
 .black { color: #111111; }
 /* Prettier Links */
 /*a { color: #0074d9; text-decoration: none; }*/
-a { color: #ffffff; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: #eeefff; text-decoration: none; }
+a:hover { color:#ffffff; text-decoration: none; }
 
 
 /*!
