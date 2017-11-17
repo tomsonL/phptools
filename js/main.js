@@ -560,8 +560,9 @@
             },
             curltophp: function( ){
                 App.code = "";
-                App.view = 'php'
-                var o = curl_to_php.transform(App.curltophp, 'php')
+                App.view = 'php';
+                var str_curl_php = App.curltophp.replace('--compressed', '');
+                var o = curl_to_php.transform(str_curl_php, 'php')
                 console.log(o);
                 // if (o) {
                 //     o = hljs.highlight("php", o).value
